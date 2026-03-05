@@ -11,6 +11,10 @@ public final class SleepAnalysisResult<T> {
         this.value = Objects.requireNonNull(value);
     }
 
-    public String getDescription() { return description; }
-    public T getValue() { return value; }
+    public String getDescription() {
+        return description;
+    }
+    public T getValue() {
+        return value;
+    }
 }
