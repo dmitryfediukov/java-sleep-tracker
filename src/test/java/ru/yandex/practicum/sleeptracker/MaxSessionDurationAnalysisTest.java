@@ -1,16 +1,18 @@
 package ru.yandex.practicum.sleeptracker;
 
 import org.junit.jupiter.api.Test;
+import ru.yandex.practicum.sleeptracker.analysis.MaxSessionDurationAnalysis;
+import ru.yandex.practicum.sleeptracker.model.SleepQuality;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MaxSessionDurationAnalysisTest {
+public class MaxSessionDurationAnalysisTest {
 
     @Test
-    void returnsZeroWhenSessionsNullOrEmpty() {
+    public void returnsZeroWhenSessionsNullOrEmpty() {
         MaxSessionDurationAnalysis analysis = new MaxSessionDurationAnalysis();
 
         SleepAnalysisResult<?> r1 = analysis.apply(null);
@@ -21,7 +23,7 @@ class MaxSessionDurationAnalysisTest {
     }
 
     @Test
-    void findsMaximumDurationCorrectly() {
+    public void findsMaximumDurationCorrectly() {
         MaxSessionDurationAnalysis analysis = new MaxSessionDurationAnalysis();
 
         List<SleepingSession> sessions = List.of(

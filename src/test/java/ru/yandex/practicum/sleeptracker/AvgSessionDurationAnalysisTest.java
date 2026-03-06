@@ -1,16 +1,18 @@
 package ru.yandex.practicum.sleeptracker;
 
 import org.junit.jupiter.api.Test;
+import ru.yandex.practicum.sleeptracker.analysis.AvgSessionDurationAnalysis;
+import ru.yandex.practicum.sleeptracker.model.SleepQuality;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AvgSessionDurationAnalysisTest {
+public class AvgSessionDurationAnalysisTest {
 
     @Test
-    void returnsZeroWhenSessionsNullOrEmpty() {
+    public void returnsZeroWhenSessionsNullOrEmpty() {
         AvgSessionDurationAnalysis analysis = new AvgSessionDurationAnalysis();
 
         SleepAnalysisResult<?> r1 = analysis.apply(null);
@@ -21,7 +23,7 @@ class AvgSessionDurationAnalysisTest {
     }
 
     @Test
-    void calculatesAverageCorrectly() {
+    public void calculatesAverageCorrectly() {
         AvgSessionDurationAnalysis analysis = new AvgSessionDurationAnalysis();
 
         // 60 и 120 минут -> среднее 90.0

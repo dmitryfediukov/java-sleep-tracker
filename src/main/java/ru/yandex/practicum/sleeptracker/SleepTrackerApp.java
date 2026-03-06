@@ -1,5 +1,7 @@
 package ru.yandex.practicum.sleeptracker;
 
+import ru.yandex.practicum.sleeptracker.analysis.*;
+
 import java.nio.file.Path;
 import java.util.List;
 import java.util.function.Function;

@@ -1,6 +1,9 @@
 package ru.yandex.practicum.sleeptracker;
 
 
+import ru.yandex.practicum.sleeptracker.exception.InvalidSleepingSessionException;
+import ru.yandex.practicum.sleeptracker.model.SleepQuality;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -15,8 +18,9 @@ public final class SleepingSession {
         this.endDate = Objects.requireNonNull(endDate, "endDate");
         this.quality = Objects.requireNonNull(quality, "quality");
 
-        if (startDate.isAfter(endDate)) {
-            throw new IllegalArgumentException("Время пробуждения должно быть позже времени засыпания: " + startDate + " -> " + endDate);
+        if (!endDate.isAfter(startDate)) {
+            throw new InvalidSleepingSessionException(
+                    "Время пробуждения должно быть позже времени засыпания: " + startDate + " -> " + endDate);
         }
     }
 

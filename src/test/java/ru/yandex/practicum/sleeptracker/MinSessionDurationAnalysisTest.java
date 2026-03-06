@@ -1,16 +1,18 @@
 package ru.yandex.practicum.sleeptracker;
 
 import org.junit.jupiter.api.Test;
+import ru.yandex.practicum.sleeptracker.analysis.MinSessionDurationAnalysis;
+import ru.yandex.practicum.sleeptracker.model.SleepQuality;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MinSessionDurationAnalysisTest {
+public class MinSessionDurationAnalysisTest {
 
     @Test
-    void returnsZeroWhenSessionsNullOrEmpty() {
+    public void returnsZeroWhenSessionsNullOrEmpty() {
         MinSessionDurationAnalysis analysis = new MinSessionDurationAnalysis();
 
         SleepAnalysisResult<?> r1 = analysis.apply(null);
@@ -21,7 +23,7 @@ class MinSessionDurationAnalysisTest {
     }
 
     @Test
-    void findsMinimumDurationCorrectly() {
+    public void findsMinimumDurationCorrectly() {
         MinSessionDurationAnalysis analysis = new MinSessionDurationAnalysis();
 
         List<SleepingSession> sessions = List.of(

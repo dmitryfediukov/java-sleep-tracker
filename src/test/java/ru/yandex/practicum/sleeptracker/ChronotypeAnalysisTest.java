@@ -1,16 +1,19 @@
 package ru.yandex.practicum.sleeptracker;
 
 import org.junit.jupiter.api.Test;
+import ru.yandex.practicum.sleeptracker.analysis.ChronotypeAnalysis;
+import ru.yandex.practicum.sleeptracker.model.Chronotype;
+import ru.yandex.practicum.sleeptracker.model.SleepQuality;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ChronotypeAnalysisTest {
+public class ChronotypeAnalysisTest {
 
     @Test
-    void returnsDoveWhenSessionsNullOrEmpty() {
+    public void returnsDoveWhenSessionsNullOrEmpty() {
         ChronotypeAnalysis analysis = new ChronotypeAnalysis();
 
         SleepAnalysisResult<?> r1 = analysis.apply(null);
@@ -22,7 +25,7 @@ class ChronotypeAnalysisTest {
     }
 
     @Test
-    void returnsOwlWhenOwlNightsAreMajority() {
+    public void returnsOwlWhenOwlNightsAreMajority() {
         ChronotypeAnalysis analysis = new ChronotypeAnalysis();
 
         /*
@@ -56,7 +59,7 @@ class ChronotypeAnalysisTest {
     }
 
     @Test
-    void returnsDoveOnTieBetweenOwlAndLark() {
+    public void returnsDoveOnTieBetweenOwlAndLark() {
         ChronotypeAnalysis analysis = new ChronotypeAnalysis();
 
         /*
@@ -84,7 +87,7 @@ class ChronotypeAnalysisTest {
     }
 
     @Test
-    void ignoresSleeplessNightsAndDayNaps() {
+    public void ignoresSleeplessNightsAndDayNaps() {
         ChronotypeAnalysis analysis = new ChronotypeAnalysis();
 
         /*

@@ -1,16 +1,18 @@
 package ru.yandex.practicum.sleeptracker;
 
 import org.junit.jupiter.api.Test;
+import ru.yandex.practicum.sleeptracker.analysis.BadQualitySessionsCountAnalysis;
+import ru.yandex.practicum.sleeptracker.model.SleepQuality;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BadQualitySessionsCountAnalysisTest {
+public class BadQualitySessionsCountAnalysisTest {
 
     @Test
-    void returnsZeroWhenSessionsNullOrEmpty() {
+    public void returnsZeroWhenSessionsNullOrEmpty() {
         BadQualitySessionsCountAnalysis analysis = new BadQualitySessionsCountAnalysis();
 
         SleepAnalysisResult<?> r1 = analysis.apply(null);
@@ -21,7 +23,7 @@ class BadQualitySessionsCountAnalysisTest {
     }
 
     @Test
-    void countsBadSessionsCorrectly() {
+    public void countsBadSessionsCorrectly() {
         BadQualitySessionsCountAnalysis analysis = new BadQualitySessionsCountAnalysis();
 
         List<SleepingSession> sessions = List.of(

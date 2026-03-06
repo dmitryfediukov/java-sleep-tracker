@@ -1,4 +1,8 @@
-package ru.yandex.practicum.sleeptracker;
+package ru.yandex.practicum.sleeptracker.analysis;
+
+import ru.yandex.practicum.sleeptracker.model.Chronotype;
+import ru.yandex.practicum.sleeptracker.SleepAnalysisResult;
+import ru.yandex.practicum.sleeptracker.SleepingSession;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -15,6 +19,12 @@ public class ChronotypeAnalysis implements Function<List<SleepingSession>, Sleep
 
     private static final LocalTime NIGHT_START = LocalTime.of(0, 0);
     private static final LocalTime NIGHT_END = LocalTime.of(6, 0);
+
+    private static final LocalTime OWL_SLEEP_AFTER = LocalTime.of(23, 0);
+    private static final LocalTime OWL_WAKE_AFTER = LocalTime.of(9, 0);
+
+    private static final LocalTime LARK_SLEEP_BEFORE = LocalTime.of(22, 0);
+    private static final LocalTime LARK_WAKE_BEFORE = LocalTime.of(7, 0);
 
     @Override
     public SleepAnalysisResult<Chronotype> apply(List<SleepingSession> sessions) {
@@ -100,10 +110,10 @@ public class ChronotypeAnalysis implements Function<List<SleepingSession>, Sleep
     }
 
     private Chronotype classifyByTimes(LocalTime sleepStart, LocalTime wakeTime) {
-        boolean owl = sleepStart.isAfter(LocalTime.of(23, 0)) && wakeTime.isAfter(LocalTime.of(9, 0));
+        boolean owl = sleepStart.isAfter(OWL_SLEEP_AFTER) && wakeTime.isAfter(OWL_WAKE_AFTER);
         if (owl) return Chronotype.OWL;
 
-        boolean lark = sleepStart.isBefore(LocalTime.of(22, 0)) && wakeTime.isBefore(LocalTime.of(7, 0));
+        boolean lark = sleepStart.isBefore(LARK_SLEEP_BEFORE) && wakeTime.isBefore(LARK_WAKE_BEFORE);
         if (lark) return Chronotype.LARK;
 
         return Chronotype.DOVE;

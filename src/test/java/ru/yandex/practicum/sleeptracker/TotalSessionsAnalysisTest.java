@@ -1,16 +1,18 @@
 package ru.yandex.practicum.sleeptracker;
 
 import org.junit.jupiter.api.Test;
+import ru.yandex.practicum.sleeptracker.analysis.TotalSessionsAnalysis;
+import ru.yandex.practicum.sleeptracker.model.SleepQuality;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TotalSessionsAnalysisTest {
+public class TotalSessionsAnalysisTest {
 
     @Test
-    void returnsZeroWhenSessionsIsNull() {
+    public void returnsZeroWhenSessionsIsNull() {
         TotalSessionsAnalysis analysis = new TotalSessionsAnalysis();
 
         SleepAnalysisResult<?> result = analysis.apply(null);
@@ -20,7 +22,7 @@ class TotalSessionsAnalysisTest {
     }
 
     @Test
-    void countsSessionsCorrectly() {
+    public void countsSessionsCorrectly() {
         TotalSessionsAnalysis analysis = new TotalSessionsAnalysis();
 
         List<SleepingSession> sessions = List.of(

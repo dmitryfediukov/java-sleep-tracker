@@ -1,16 +1,18 @@
 package ru.yandex.practicum.sleeptracker;
 
 import org.junit.jupiter.api.Test;
+import ru.yandex.practicum.sleeptracker.analysis.SleeplessNightsAnalysis;
+import ru.yandex.practicum.sleeptracker.model.SleepQuality;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SleeplessNightsAnalysisTest {
+public class SleeplessNightsAnalysisTest {
 
     @Test
-    void returnsZeroWhenSessionsNullOrEmpty() {
+    public void returnsZeroWhenSessionsNullOrEmpty() {
         SleeplessNightsAnalysis analysis = new SleeplessNightsAnalysis();
 
         SleepAnalysisResult<?> r1 = analysis.apply(null);
@@ -21,7 +23,7 @@ class SleeplessNightsAnalysisTest {
     }
 
     @Test
-    void nightIsNotSleeplessWhenSessionCrossesMidnight_23to03() {
+    public void nightIsNotSleeplessWhenSessionCrossesMidnight_23to03() {
         SleeplessNightsAnalysis analysis = new SleeplessNightsAnalysis();
 
         // Сессия 01.10 23:00 -> 02.10 03:00 пересекает ночь 02.10 00:00-06:00
@@ -40,7 +42,7 @@ class SleeplessNightsAnalysisTest {
     }
 
     @Test
-    void nightIsSleeplessWhenOnlyDaySleep_07to11() {
+    public void nightIsSleeplessWhenOnlyDaySleep_07to11() {
         SleeplessNightsAnalysis analysis = new SleeplessNightsAnalysis();
 
         // Сон только 02.10 07:00 -> 11:00 НЕ пересекает 00:00-06:00, значит ночь 02.10 бессонная
@@ -59,7 +61,7 @@ class SleeplessNightsAnalysisTest {
     }
 
     @Test
-    void countsSleeplessNightsAcrossSeveralDays_includingStartBeforeNoonEdgeCase() {
+    public void countsSleeplessNightsAcrossSeveralDays_includingStartBeforeNoonEdgeCase() {
         SleeplessNightsAnalysis analysis = new SleeplessNightsAnalysis();
 
         /*
